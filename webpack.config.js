@@ -1,22 +1,26 @@
 const webpack = require('webpack');
 
-module.exports = {
+module.exports ={
     entry: './ex/index.jsx',
     output: {
         path: __dirname + '/public',
         filename: './bundle.js'
     },
-    devServer: {
+    devServer:{
         port: 8080,
-        contentBase: './public'
+        contentBase: './public',
+    },
+    resolve:{
+        extensions: ['', '.js', '.jsx']
     },
     module: {
         loaders: [{
             test: /.jsx?$/,
             loader: 'babel-loader',
-            exclude: /node-modules/,
-            query:{
-                presets: ['es2105', 'react']
+            exclude: /node_modules/,
+            query: {
+                presets: ['es2015', 'react'],
+                plugins: ['transform-object-rest-spread']
             }
         }]
     }
